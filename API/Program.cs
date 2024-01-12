@@ -12,11 +12,11 @@ builder.Services.AddDbContext<DataContext>(opt =>{
 
 builder.Services.AddControllers();
 
+builder.Services.AddCors();
+
 var app = builder.Build();
 
-app.UseHttpsRedirection();
-
-app.UseAuthorization();
+app.UseCors(builder => builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
 
 app.MapControllers();
 
